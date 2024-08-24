@@ -15,10 +15,16 @@ const listingSchema=new Schema({
     image:{
         type: String,
         default:"https://unsplash.com/photos/a-view-of-the-grand-canyon-from-the-top-of-a-mountain--jOic-c0jK0",
-        set:(v) => 
+        /*set:(v) => 
             v === "" 
               ? "https://unsplash.com/photos/a-view-of-the-grand-canyon-from-the-top-of-a-mountain--jOic-c0jK0"
-              :v,
+              :v,*/
+              set: function(v) {
+                if (typeof v === 'object' && v.url) {
+                    return v.url;  // Extract URL if it's stored as an object
+                }
+                return v || "https://unsplash.com/photos/a-view-of-the-grand-canyon-from-the-top-of-a-mountain--jOic-c0jK0";  // Default or provided URL
+            }
     },
     price:Number,
     location:String,
