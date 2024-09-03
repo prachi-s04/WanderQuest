@@ -13,14 +13,8 @@ const listingSchema=new Schema({
     },    
     description:String,
     image:{
-        type: Schema.Types.Mixed,  // Mixed type to handle both strings and objects
-        default: "https://unsplash.com/photos/a-view-of-the-grand-canyon-from-the-top-of-a-mountain--jOic-c0jK0",
-        set: function(v) {
-            if (typeof v === 'object' && v.url) {
-                return v;  // Store the full object if it's an image schema object
-            }
-            return v || "https://unsplash.com/photos/a-view-of-the-grand-canyon-from-the-top-of-a-mountain--jOic-c0jK0";  // Default or provided URL
-        }
+        url: String,
+        filename: String,
     },
     price:Number,
     location:String,
