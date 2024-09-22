@@ -1,4 +1,8 @@
-{
+
+{ 
+  "engine":{
+    "node": "20.11.1"
+  },
   "name": "wanderquest-1",
   "version": "1.0.0",
   "description": "",
